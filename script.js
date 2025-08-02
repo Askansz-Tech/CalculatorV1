@@ -2,6 +2,7 @@ let previous = "";
 let current = "";
 let operator = "";
 let result = "";
+let pos = "";
 
 function one() {
     if (result !== "") {
@@ -101,6 +102,16 @@ function powery() {
     current = "";
 }
 
+function plusMinus() {
+    if (pos !== "idk") {
+        pos = "idk";
+        document.getElementById("inputField").value = "-" + current;
+    } else {
+        pos = "ik";
+        document.getElementById("inputField").value = current;
+    }
+}
+
 function equal() {
     if (operator !== "x" && operator !== "/" && operator !== "-" && operator !== "+" && operator !== "xʸ") {
         window.alert("Please choose an operator first");
@@ -115,6 +126,10 @@ function equal() {
     let number1 = parseInt(previous);
     let number2 = parseInt(current);
     let result;
+
+    if (pos === "idk") {
+        number1 = number1 - number1 - number1;
+    }
 
     if (operator === "+") {
         result = number1 + number2;
@@ -174,3 +189,4 @@ document.getElementById("-").addEventListener("click", minus)
 document.getElementById("/").addEventListener("click", divide)
 document.getElementById("x").addEventListener("click", times)
 document.getElementById("py").addEventListener("click", powery)
+document.getElementById("+-").addEventListener("click", plusMinus)
