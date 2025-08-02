@@ -90,12 +90,19 @@ function divide() {
 function times() {
     previous = current;
     operator = "x";
-    document.getElementById("inputField").value = current + "x";
+    document.getElementById("inputField").value = current + "×";
+    current = "";
+}
+
+function powery() {
+    previous = current;
+    operator = "xʸ"
+    document.getElementById("inputField").value = current + "xʸ";
     current = "";
 }
 
 function equal() {
-    if (operator !== "x" && operator !== "/" && operator !== "-" && operator !== "+") {
+    if (operator !== "x" && operator !== "/" && operator !== "-" && operator !== "+" && operator !== "xʸ") {
         window.alert("Please choose an operator first");
         previous = "";
         current = "";
@@ -137,6 +144,13 @@ function equal() {
         operator = "";
     }
 
+    if (operator === "xʸ") {
+        result = Math.pow(number1, number2);
+        previous = "";
+        current = "";
+        operator = "";
+    }
+
     let result100 = result * 100;
     let rounded100 = Math.round(result100)
     let roundedResult = rounded100 / 100;
@@ -159,3 +173,4 @@ document.getElementById("+").addEventListener("click", plus)
 document.getElementById("-").addEventListener("click", minus)
 document.getElementById("/").addEventListener("click", divide)
 document.getElementById("x").addEventListener("click", times)
+document.getElementById("py").addEventListener("click", powery)
